@@ -1,12 +1,24 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-/**
- * Esse arquivo é respons´vel por renderizar o "html"
- * @returns App que vai ser transformado em html
- */
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import Listing from 'pages/Listing';
+import Form from 'pages/Form';
+import Navbar from "components/Navbar";
+
 function App() {
   return (
-    <Navbar/>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Listing />} />
+        <Route path="/form">
+          <Route path=":movieId" element={<Form />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
